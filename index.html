@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="./assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid ml-5 mr-5 mt-2 text-center jumbo border rounded">
+        <div class="container">
+            <h1 class="display-4">Current Train Schedule</h1>
+            <p class="lead">Don't miss</p>
+        </div>
+    </div>
+    <div class="container bg-light mb-5 border">
+        <span class="label label-default title">Train</span>
+        <div class="row">
+            <table class="table table-sm trainTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Count</th>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Frequency (min)</th>
+                        <th scope="col">Next Arrival</th>
+                        <th scope="col">Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container bg-light border mb-5">
+        <span class="label label-default title">Add Train</span>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="mb-0">Train Name</p>
+                <input type="text" class="form-control input mb-3" placeholder="Message" id="train-input">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="mb-0">Destination</p>
+                <input type="text" class="form-control input mb-3" placeholder="Message" id="destination-input">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="mb-0">First Train Time (HH:mm-military time)</p>
+                <input type="time" class="form-control input mb-3" placeholder="Message" id="time-input">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <p class="mb-0">Frequency</p>
+                <input type="text" class="form-control input mb-3" placeholder="Message" id="frequency-input">
+            </div>
+        </div>
+        <button class="btn btn-primary mb-3" id="submit-button">Submit</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="./assets/javascript/main.js" type="text/javascript"></script>
+</body>
+
+</html>

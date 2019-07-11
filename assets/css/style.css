@@ -1,0 +1,9 @@
+.jumbo {
+    width: 50%; 
+    position: relative; 
+    left: 20%
+}
+.title {
+    font-size: 18px; 
+    font-weight: bold
+}
