@@ -14,30 +14,47 @@ var database = firebase.database()
 //variables for train, time, destination, frequency, arrival, minutes away
 var train;
 var destination;
-var time
-var frequency
+var time;
+var frequency;
+var count; 
 var arrival;
 var minutesAway;
+var arrivalTime; 
+var realTime; 
+var finalTime; 
+var firstMinutesAway;
 
+function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    return minutes 
+  }
+  
 //submits and pushes input information to the database 
 $('#submit-button').on('click', function () {
     train = $('#train-input').val()
     destination = $('#destination-input').val()
-    time = $('#time-input').val()
+    time = $('#time-input').val().split(':')
+    // var numberTime = parseInt($('#time-input').val())
+    var m = moment().hours(time[0]).minutes(time[1])
     frequency = $('#frequency-input').val()
-    console.log(train, destination, time, frequency)
-    //making algorith to predict time arrived 
-    // arrival = time.setMinutes()
+    anotherM = moment(m)
+    arrival = anotherM.add(frequency, "minutes")
+    console.log(arrival)
+    arrivalTime = arrival._d.getTime()
+    realTime = moment(arrivalTime)
+    finalTime = realTime._d.toString().substring(16, 21)
+    firstMinutesAway =  moment() - moment(arrivalTime)
+    console.log(firstMinutesAway)
+    minutesAway = millisToMinutesAndSeconds(firstMinutesAway)
+    console.log(minutesAway)
     database.ref('trains').push({
-        count: 1,
+        count: 1,  
         train,
         destination,
-        time,
         frequency,
-        arrival: 1
+        finalTime, 
+        minutesAway
     })
-
-    console.log(time)
     $('.input').val('')
 })
 
@@ -54,10 +71,9 @@ database.ref('trains').on('value', function (snapshot) {
         <td>${childData.train}</td>
         <td>${childData.destination}</td>
         <td>${childData.frequency}</td>
-        <td>${childData.nextArrival}</td>
+        <td>${childData.finalTime}</td>
+        <td>${childData.minutesAway}</td>
         </tr>`)
             });
         });
 })
-
-
